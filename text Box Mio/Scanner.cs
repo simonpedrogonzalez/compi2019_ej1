@@ -393,7 +393,14 @@ public class Scanner {
             }
         else
         {
-            t.kind = Token.IDENT;
+                if(t.str[t.str.Length - 1] == '_')//ModEj2
+                {
+                    Parser.Errors.Error("_ at end of identifier");
+                }
+                else
+                {
+                    t.kind = Token.IDENT;
+                }
         }
         
     }
