@@ -395,7 +395,7 @@ public class Scanner {
         {
                 if(t.str[t.str.Length - 1] == '_')//ModEj2
                 {
-                    Parser.Errors.Error("_ at end of identifier");
+                    Parser.Errors.Error("_ at e\tnd of identifier");
                 }
                 else
                 {
