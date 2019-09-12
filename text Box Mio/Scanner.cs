@@ -345,57 +345,62 @@ public class Scanner {
     }
     static void ReadName(Token t)
     {
+        char last='_';
         while ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_' || ('0' <= ch && '9' >= ch))
         {
+            last = ch;
             t.str = t.str+ch;
             NextCh();
         }
-        if (esPalabraClave(t.str))
-            switch (t.str)
-            {
-                case "break":
-                    t.kind = Token.BREAK;
-                    break;
-                case "class":
-                    t.kind = Token.CLASS;
-                    break;
-                case "const":
-                    t.kind = Token.CONST;
-                    break;
-                case "else":
-                    t.kind = Token.ELSE;
-                    break;
-                case "if":
-                    t.kind = Token.IF;
-                    break;
-                case "new":
-                    t.kind = Token.NEW;
-                    break;
-                case "read":
-                    t.kind = Token.READ;
-                    break;
-                case "return":
-                    t.kind = Token.RETURN;
-                    break;
-                case "void":
-                    t.kind = Token.VOID;
-                    break;
-                case "while":
-                    t.kind = Token.WHILE;
-                    break;
-                case "write":
-                    t.kind = Token.WRITE;
-                    break;
-                case "writeln":
-                    t.kind = Token.WRITELN;
-                    break;
+            if (last != '_') {
+                if (esPalabraClave(t.str))
+                    switch (t.str)
+                    {
+                        case "break":
+                            t.kind = Token.BREAK;
+                            break;
+                        case "class":
+                            t.kind = Token.CLASS;
+                            break;
+                        case "const":
+                            t.kind = Token.CONST;
+                            break;
+                        case "else":
+                            t.kind = Token.ELSE;
+                            break;
+                        case "if":
+                            t.kind = Token.IF;
+                            break;
+                        case "new":
+                            t.kind = Token.NEW;
+                            break;
+                        case "read":
+                            t.kind = Token.READ;
+                            break;
+                        case "return":
+                            t.kind = Token.RETURN;
+                            break;
+                        case "void":
+                            t.kind = Token.VOID;
+                            break;
+                        case "while":
+                            t.kind = Token.WHILE;
+                            break;
+                        case "write":
+                            t.kind = Token.WRITE;
+                            break;
+                        case "writeln":
+                            t.kind = Token.WRITELN;
+                            break;
 
+                    }
+                else
+                {
+                    t.kind = Token.IDENT;
+                }
             }
-        else
-        {
-            t.kind = Token.IDENT;
-        }
-        
+       
+
     }
     static void ReadNumber(Token t)
     {
