@@ -698,6 +698,8 @@ namespace at.jku.ssw.cc
                 //bool encuentraDecl = false;
                 Code.CreateMetadata(curMethod);  //genera il
                 //ACA ESTAN LAS DECLARACIONES DE VARIABLES ANTES DE "{" , DESPUES DE MAIN()
+                //LAS QUITO
+                /*
                     //Declaraciones  por ahora solo decl de var, luego habria q agregar const y clases
                     while (la != Token.LBRACE && la != Token.EOF)
                     //void Main()==> int x,i; {val = new Table;....}
@@ -739,7 +741,7 @@ namespace at.jku.ssw.cc
                     Code.cargaInstr(instrParaVarsLocs);
 
                 }
-
+                */
                 Code.seleccLaProdEnLaGram(1);
                 MessageBoxCon3Preg();
                 System.Windows.Forms.TreeNode posDeclarsAux = new System.Windows.Forms.TreeNode("PosDeclars");
@@ -763,7 +765,7 @@ namespace at.jku.ssw.cc
                 Code.cargaInstr("ret");
             }
         }//Fin MethodDecl
-
+        
         static void FormPars(System.Windows.Forms.TreeNode padre)//Falta Árbol
         {
             Struct type = new Struct(Struct.Kinds.None);
@@ -1361,6 +1363,18 @@ namespace at.jku.ssw.cc
                     MessageBoxCon3Preg();
                     Code.seleccLaProdEnLaGram(6);
                     VardDecl(Symbol.Kinds.Local, varDecl); // int x,i; en MethodDecl()  con int ya consumido
+
+                    if (cantVarLocales > 0)
+                    {
+                        string instrParaVarsLocs = ".locals init(int32 V_0";
+                        for (int i = 1; i < cantVarLocales; i++)
+                        {
+                            instrParaVarsLocs = instrParaVarsLocs + "," + "\n          int32 V_" + i.ToString(); // +"  ";
+                        }
+                        instrParaVarsLocs = instrParaVarsLocs + ")";
+                        Code.cargaInstr(instrParaVarsLocs);
+
+                    }
                 }
                 else
                 {
