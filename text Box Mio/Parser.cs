@@ -694,7 +694,7 @@ namespace at.jku.ssw.cc
                 //Code.seleccLaProdEnLaGram(1);
                 //MessageBoxCon3Preg();
                 //bool encuentraDecl = false;
-                //Code.CreateMetadata(curMethod);  //genera il
+                Code.CreateMetadata(curMethod);  //genera il
                 //ACA ESTAN LAS DECLARACIONES DE VARIABLES ANTES DE "{" , DESPUES DE MAIN()
                 //LAS QUITO
                 /*
@@ -1319,8 +1319,9 @@ namespace at.jku.ssw.cc
             Check(Token.LBRACE);
             block.Nodes.Add("'{'");
             block.ExpandAll();
-            MessageBoxCon3Preg();
+            MessageBoxCon3Preg(methodDecl);
             Code.Colorear("token");
+            MessageBoxCon3Preg();
             //Agrego un nodo posBlockContent
             System.Windows.Forms.TreeNode posBlockContent = new System.Windows.Forms.TreeNode("PosBlockContent");
             block.Nodes.Add(posBlockContent);
