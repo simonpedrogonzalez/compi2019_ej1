@@ -45,4 +45,4 @@
 35.OpcExprBetweenBrack =  "[" Expr "]".
 36.String_or_Expr = argstring | Expr.
 37.PosBlockContent = . | BlockContent PosBlockContent.
-38.BlockCOntent = VarDecl | Statement.
+38.BlockContent = VarDecl | Statement.
